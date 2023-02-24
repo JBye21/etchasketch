@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
+    <title>Document</title>
+</head>
+<body>
+
+    <button id="numberChoice">Number of Squares</button>
+
+
+    <div class="container">
+        <div class="grid-box">
+            <div class="row"> 
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+            </div>
+            <div class="row"> 
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+            </div>
+            <div class="row"> 
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+            </div>
+            <div class="row"> 
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+            </div>
+        </div>
+    </div>
+    
+
+    <script>
+
+        // Prompt user for grid size on button click
+
+        const gridButton = document.querySelector('#numberChoice');
+
+        gridButton.addEventListener("click", newGrid);
+
+
+
+
+
+
+        function newGrid() {
+
+            var question = prompt("How many squares on each side do you want?");
+
+            const squarePerSide = parseInt(question);
+
+            while (squarePerSide > 100) {
+                alert("Choose a number under 100");
+
+                question = prompt("How many squares on each side do you want?");
+                squarePerSide = parseInt(question);
+            }
+
+
+            // Wipe previous grid 
+
+            const container = document.querySelector('.grid-box');
+
+            container.innerHTML = '';
+
+
+            // Add new divs using the variable with the users number input
+
+            for (let i=0; i < squarePerSide; i++) {
+
+                const div = document.createElement('div');
+                div.classList.add('row');
+                
+                container.appendChild(div);
+
+                for (let i=0; i < squarePerSide; i++) {
+
+                    var newDiv = document.createElement('div')
+                    newDiv.classList.add('square');
+                    div.appendChild(newDiv);
+            }
+            }
+
+            // Make each square light up when hovered over
+
+
+            const squarespace = document.getElementsByClassName('square');
+
+            for (var i=0; i < squarespace.length; i++) {
+                squarespace[i].addEventListener("mouseover", function() {
+                this.style.backgroundColor = 'black';
+                });
+            }
+    }
+        
+
+        const squarespace = document.getElementsByClassName('square');
+
+        for (var i=0; i < squarespace.length; i++) {
+            squarespace[i].addEventListener("mouseover", function() {
+            this.style.backgroundColor = 'black';
+            });
+        }
+
+
+
+
+
+
+    </script>
+
+</body>
+</html>
